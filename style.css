@@ -112,3 +112,22 @@ body {
     text-transform: capitalize;
     font-weight: 500;
 }
+
+.weather-details {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: rgba(30, 136, 229, 0.1);
+    border-radius: 15px;
+    color: #0d47a1;
+}
+
+.weather-details i {
+    margin-right: 8px;
+    color: #800020;
+}
+
+
+hr {
+    margin: 30px 0;
+    border-top: 2px dashed rgba(128, 0, 32, 0.2);
+}
