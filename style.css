@@ -8,3 +8,11 @@ body {
 .weather-app {
     padding: 20px;
 }
+
+.weather-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: none;
+    background: white;
+}
