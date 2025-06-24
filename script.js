@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const visibility = document.getElementById('visibility');
     const forecast = document.getElementById('forecast');
 
-    // Event listeners:-( search button, location button, and Enter key)!
+    // Event listeners:-( search button, location button, and Enter key)
     searchBtn.addEventListener('click', searchWeather);
     locationBtn.addEventListener('click', getLocationWeather);
     cityInput.addEventListener('keypress', function(e) {
@@ -52,6 +52,35 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Geolocation is not supported by your browser');
         }
+    }
+
+    // The function gets current and forecast weather by city name
+    function fetchWeather(city) {
+        const url = `${baseUrl}?q=${city}&appid=${apiKey}&units=metric`;
+        console.log("Attempting to fetch from:", url); // Debug line
+
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status); // Debug
+                if (!response.ok) {
+                    return response.json().then(errData => {
+                        throw new Error(errData.message || 'City not found');
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Received data:", data); // Debug
+                displayCurrentWeather(data);
+                return fetch(`${forecastUrl}?q=${city}&appid=${apiKey}&units=metric`);
+            })
+
+            .then(response => response.json())
+            .then(data => displayForecast(data))
+            .catch(error => {
+                alert(error.message);
+                console.error('Error:', error);
+            });
     }
 
 });
