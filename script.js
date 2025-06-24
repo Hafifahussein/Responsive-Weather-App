@@ -36,5 +36,22 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please enter a city name');
         }
     }
+   // function retrieving location coordinates using API
+    function getLocationWeather() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    fetchWeatherByCoords(lat, lon);
+                },
+                error => {
+                    alert('Error getting location: ' + error.message);
+                }
+            );
+        } else {
+            alert('Geolocation is not supported by your browser');
+        }
+    }
 
 });
