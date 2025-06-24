@@ -17,4 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const visibility = document.getElementById('visibility');
     const forecast = document.getElementById('forecast');
 
+    // Event listeners:-( search button, location button, and Enter key)!
+    searchBtn.addEventListener('click', searchWeather);
+    locationBtn.addEventListener('click', getLocationWeather);
+    cityInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchWeather();
+        }
+    });
+
 });
