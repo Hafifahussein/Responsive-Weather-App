@@ -110,10 +110,33 @@ document.addEventListener('DOMContentLoaded', function() {
         humidity.textContent = `${data.main.humidity}%`;
         pressure.textContent = `${data.main.pressure} hPa`;
         visibility.textContent = `${data.visibility} km`;
-
         const iconCode = data.weather[0].icon;
         weatherIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${data.weather[0].description}">`;
     }
 
+
+    // # show 5-day forecast using loop"
+    function displayForecast(data) {
+        forecast.innerHTML = '';
+        for (let i = 0; i < data.list.length; i += 8) {
+            const dayData = data.list[i];
+            const date = new Date(dayData.dt * 1000);
+            const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+
+            const forecastDay = document.createElement('div');
+            forecastDay.className = 'col-md-2 col-sm-4 col-6 forecast-day';
+            forecastDay.innerHTML = `
+                <h5>${dayName}</h5>
+                <img src="https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png" alt="${dayData.weather[0].description}">
+                <div class="forecast-temp">
+                    <span class="max-temp">${Math.round(dayData.main.temp_max)}°</span> /
+                    <span class="min-temp">${Math.round(dayData.main.temp_min)}°</span>
+                </div>
+                <p>${dayData.weather[0].description}</p>
+            `;
+
+            forecast.appendChild(forecastDay);
+        }
+    }
 
 });
