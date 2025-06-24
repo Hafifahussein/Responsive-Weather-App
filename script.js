@@ -101,5 +101,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    // #  update UI with current weather"
+    function displayCurrentWeather(data) {
+        cityName.textContent = `${data.name}, ${data.sys.country}`;
+        temperature.textContent = `${Math.round(data.main.temp)}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        windSpeed.textContent = `${Math.round(data.wind.speed * 3.6)} km/h`;
+        humidity.textContent = `${data.main.humidity}%`;
+        pressure.textContent = `${data.main.pressure} hPa`;
+        visibility.textContent = `${data.visibility} km`;
+
+        const iconCode = data.weather[0].icon;
+        weatherIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${data.weather[0].description}">`;
+    }
+
 
 });
