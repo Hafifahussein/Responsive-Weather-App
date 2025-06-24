@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
     const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
-    // DOM elements for weather data and user inputs
+    // # DOM elements for weather data and user inputs
     const cityInput = document.getElementById('city-input');
     const searchBtn = document.getElementById('search-btn');
     const locationBtn = document.getElementById('location-btn');
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const visibility = document.getElementById('visibility');
     const forecast = document.getElementById('forecast');
 
-    // Event listeners:-( search button, location button, and Enter key)
+    // # Event listeners:-( search button, location button, and Enter key)
     searchBtn.addEventListener('click', searchWeather);
     locationBtn.addEventListener('click', getLocationWeather);
     cityInput.addEventListener('keypress', function(e) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Please enter a city name');
         }
     }
-   // function retrieving location coordinates using API
+   // # function retrieving location coordinates using API
     function getLocationWeather() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // The function gets current and forecast weather by city name
+    // # The function gets current and forecast weather by city name
     function fetchWeather(city) {
         const url = `${baseUrl}?q=${city}&appid=${apiKey}&units=metric`;
         console.log("Attempting to fetch from:", url); // Debug line
@@ -82,5 +82,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
             });
     }
+
+    // # by coordinates Latitude/longitude
+    function fetchWeatherByCoords(lat, lon) {
+        const url = `${baseUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                displayCurrentWeather(data);
+                return fetch(`${forecastUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+            })
+            .then(response => response.json())
+            .then(data => displayForecast(data))
+            .catch(error => {
+                alert('Error fetching weather data');
+                console.error('Error:', error);
+            });
+    }
+
 
 });
