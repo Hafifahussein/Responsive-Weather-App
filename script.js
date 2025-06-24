@@ -3,4 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
     const forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
+    // DOM elements for weather data and user inputs
+    const cityInput = document.getElementById('city-input');
+    const searchBtn = document.getElementById('search-btn');
+    const locationBtn = document.getElementById('location-btn');
+    const cityName = document.getElementById('city-name');
+    const weatherIcon = document.getElementById('weather-icon');
+    const temperature = document.getElementById('temperature');
+    const weatherDescription = document.getElementById('weather-description');
+    const windSpeed = document.getElementById('wind-speed');
+    const humidity = document.getElementById('humidity');
+    const pressure = document.getElementById('pressure');
+    const visibility = document.getElementById('visibility');
+    const forecast = document.getElementById('forecast');
+
 });
