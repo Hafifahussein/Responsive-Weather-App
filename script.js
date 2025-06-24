@@ -28,4 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchWeather('Nairobi');
 
+    function searchWeather() {
+        const city = cityInput.value.trim();
+        if (city) {
+            fetchWeather(city);
+        } else {
+            alert('Please enter a city name');
+        }
+    }
+
 });
