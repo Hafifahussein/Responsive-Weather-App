@@ -26,4 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    fetchWeather('Nairobi');
+
 });
