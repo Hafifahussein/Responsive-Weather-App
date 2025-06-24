@@ -168,3 +168,26 @@ hr {
     color: #0d47a1;
     font-weight: 500;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .weather-details div {
+        margin-bottom: 15px;
+    }
+
+    .forecast-day {
+        margin-bottom: 15px;
+    }
+
+    #city-name {
+        font-size: 1.8rem;
+    }
+}
