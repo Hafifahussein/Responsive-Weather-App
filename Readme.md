@@ -19,8 +19,10 @@ A simple, responsive weather application built with HTML, CSS, and JavaScript. I
 ## Setup Instructions
 
 1. Clone the repository
+   ```bash
    git clone https://github.com/Hafifahussein/Responsive-Weather-App.git
-2. Open index.html in a browser
+   ```
+2. Open `index.html` in a browser
 
 ## Live Site
 
